@@ -1,0 +1,9 @@
+DROP DATABASE IF EXISTS sample;
+CREATE DATABASE sample
+  TEMPLATE template0
+  LC_COLLATE 'ja_JP.utf8'
+  LC_CTYPE 'ja_JP.utf8';
+DROP USER IF EXISTS app;
+CREATE USER app
+    PASSWORD 'apppass';
+ALTER DATABASE sample OWNER TO app;
