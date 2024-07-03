@@ -1,23 +1,21 @@
 <script setup>
 const props = defineProps({
-  article:Object
+  article: Object
 });
 
 </script>
 
 <template>
-  <h2>{{ article.title }}</h2>
-  <div class="author">
-    <p>{{ article.createdAt }}</p>
-    <p>{{ article.author }}</p>
-  </div>
-  <main>
-    {{ article.content }}
-  </main>
+  <v-card variant="outlined">
+    <v-card-title>{{ article.title }}</v-card-title>
+    <v-card-subtitle>
+      <p>{{ article.author }}</p>
+      <p>{{ article.createdAt }}</p>
+    </v-card-subtitle>
+    <v-card-text>{{ article.content }}</v-card-text>
+  </v-card>
 </template>
 
 <style scoped>
-.author {
-  color: darkgray;
-}
+
 </style>

@@ -21,9 +21,9 @@ onMounted(() => {
 
 <template>
   <h1>お知らせ一覧</h1>
-  <div v-for="article of articles">
+  <v-list lines="three" v-for="article of articles">
     <Article v-bind:article/>
-  </div>
+  </v-list>
 </template>
 
 <style scoped>
