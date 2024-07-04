@@ -5,6 +5,7 @@ const form = ref();
 const title = ref("");
 const author = ref("");
 const content = ref("");
+const completed = ref(false);
 
 const notEmptyRule = [
   value => {
@@ -14,6 +15,7 @@ const notEmptyRule = [
 
 const reset = () => {
   form.value.reset();
+  completed.value = false;
 };
 
 const submit = async () => {
@@ -32,6 +34,7 @@ const submit = async () => {
       content: content.value
     })
   });
+  completed.value = true;
   reset();
 }
 
@@ -48,6 +51,8 @@ const submit = async () => {
     <v-btn variant="outlined" @click="submit">投稿する</v-btn>
     <v-btn variant="outlined" @click="reset">リセットする</v-btn>
   </v-form>
+
+  <v-snackbar v-model="completed" :timeout="3000">投稿しました</v-snackbar>
 </template>
 
 <style scoped>
