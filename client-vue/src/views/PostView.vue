@@ -21,7 +21,17 @@ const submit = async () => {
   if (!valid) {
     return;
   }
-  // TODO POSTリクエストを送る
+  await window.fetch('/api/articles', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      title: title.value,
+      author: author.value,
+      content: content.value
+    })
+  });
   reset();
 }
 
