@@ -1,16 +1,18 @@
 package com.example.persistence.entity;
 
+import com.example.web.request.ArticleRequest;
+
 import java.time.LocalDateTime;
 
 public class Article {
 
-    private int id;
+    private Integer id;
     private String author;
     private String title;
     private String content;
     private LocalDateTime createdAt;
 
-    public Article(int id, String author, String title, String content, LocalDateTime createdAt) {
+    public Article(Integer id, String author, String title, String content, LocalDateTime createdAt) {
         this.id = id;
         this.author = author;
         this.title = title;
@@ -18,11 +20,17 @@ public class Article {
         this.createdAt = createdAt;
     }
 
-    public int getId() {
+    public Article(ArticleRequest request) {
+        this.title = request.getTitle();
+        this.author = request.getAuthor();
+        this.content = request.getContent();
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

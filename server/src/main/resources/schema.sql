@@ -6,5 +6,5 @@ CREATE TABLE articles
     author VARCHAR(256),
     title VARCHAR(256),
     content TEXT,
-    created_at TIMESTAMP
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

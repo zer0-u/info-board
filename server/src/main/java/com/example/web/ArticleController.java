@@ -2,10 +2,13 @@ package com.example.web;
 
 import com.example.persistence.entity.Article;
 import com.example.service.ArticleService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.web.request.ArticleRequest;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -21,6 +24,17 @@ public class ArticleController {
     @GetMapping
     public List<Article> findAll() {
         return service.findAll();
+    }
+
+    @PostMapping
+    public ResponseEntity<Void> post(@Validated @RequestBody ArticleRequest request) {
+        Article article = new Article(request);
+        service.add(article);
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
+                .pathSegment(article.getId().toString())
+                .build().encode()
+                .toUri();
+        return ResponseEntity.created(location).build();
     }
 
 }
