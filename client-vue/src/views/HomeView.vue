@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <h1>This is an home page</h1>
+    <h1>掲示板</h1>
   </div>
 </template>
 
