@@ -3,25 +3,33 @@
     let author = '';
     let content = '';
     let completed = false;
+    let hasError = false;
 
     function reset() {
         title = '';
         author = '';
         content = '';
+        hasError = false;
     }
 
     function setUncompleted() {
         completed = false;
+        hasError = false;
     }
 
     function setCompleted() {
         completed = true;
+        hasError = false;
     }
 
     async function submit() {
         setUncompleted();
         const article = {
             title, author, content
+        }
+        if (!isValid(article)) {
+            hasError = true;
+            return;
         }
         await window.fetch('/api/articles', {
             method: 'POST',
@@ -33,6 +41,10 @@
         reset();
         setCompleted();
     }
+
+    function isValid(article) {
+        return article.title !== '' && article.author !== '' && article.content !== '';
+    }
 </script>
 
 <h1>お知らせを投稿する</h1>
@@ -40,17 +52,20 @@
     <p>
         <label>
             タイトル
-            <input type="text" size="40" bind:value={title} on:input={setUncompleted} required/>
+            <input type="text" size="40" bind:value={title} on:input={setUncompleted}/>
+            {#if hasError && title === ""}<p class="error">必須入力です</p>{/if}
         </label>
     </p>
     <p>
         <label>
             投稿者名
-            <input type="text" size="40" bind:value={author} on:input={setUncompleted} required/>
+            <input type="text" size="40" bind:value={author} on:input={setUncompleted}/>
+            {#if hasError && author === ""}<p class="error">必須入力です</p>{/if}
         </label>
     </p>
     <p>
-        <textarea placeholder="本文" cols="60" rows="10" bind:value={content} on:input={setUncompleted} required/>
+        <textarea placeholder="本文" cols="60" rows="10" bind:value={content} on:input={setUncompleted}/>
+        {#if hasError && content === ""}<p class="error">必須入力です</p>{/if}
     </p>
     <button on:click={submit}>投稿する</button>
     <button on:click={reset}>リセットする</button>
@@ -60,5 +75,8 @@
 {/if}
 
 <style>
-
+    .error {
+        color: darkred;
+        font-size: 0.8em;
+    }
 </style>
