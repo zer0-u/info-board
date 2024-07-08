@@ -1,4 +1,6 @@
 <script>
+    import dayjs from "dayjs";
+
     export let data;
 </script>
 
@@ -10,7 +12,7 @@
             <h2>{article.title}</h2>
             <span class="author">
                 <p>{article.author}</p>
-                <p>{article.createdAt}</p>
+                <p>{dayjs(article.createdAt).format("YYYY/MM/DD HH:mm")}</p>
             </span>
             <p>{article.content}</p>
         </div>
