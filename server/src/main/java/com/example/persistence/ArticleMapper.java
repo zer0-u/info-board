@@ -11,7 +11,7 @@ import java.util.List;
 @Mapper
 public interface ArticleMapper {
 
-    @Select("SELECT id, author, title, content, created_at FROM articles ORDER BY id")
+    @Select("SELECT id, author, title, content, created_at FROM articles ORDER BY created_at DESC")
     List<Article> findAll();
 
     @Insert("INSERT INTO articles(author, title, content) VALUES(#{author},#{title},#{content})")
