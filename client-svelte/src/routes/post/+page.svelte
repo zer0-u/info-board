@@ -48,31 +48,28 @@
 </script>
 
 <h1>お知らせを投稿する</h1>
-<form>
+<form method="POST">
     <p>
         <label>
             タイトル
-            <input type="text" size="40" bind:value={title} on:input={setUncompleted}/>
+            <input type="text" size="40" name="title" autocomplete="off"/>
             {#if hasError && title === ""}<p class="error">必須入力です</p>{/if}
         </label>
     </p>
     <p>
         <label>
             投稿者名
-            <input type="text" size="40" bind:value={author} on:input={setUncompleted}/>
+            <input type="text" size="40" name="author" autocomplete="off"/>
             {#if hasError && author === ""}<p class="error">必須入力です</p>{/if}
         </label>
     </p>
     <p>
-        <textarea placeholder="本文" cols="60" rows="10" bind:value={content} on:input={setUncompleted}/>
+        <textarea placeholder="本文" cols="60" rows="10" name="content" autocomplete="off"/>
         {#if hasError && content === ""}<p class="error">必須入力です</p>{/if}
     </p>
-    <button on:click={submit}>投稿する</button>
-    <button on:click={reset}>リセットする</button>
+    <button formaction="?/create">投稿する</button>
+    <button formaction="?/reset">リセットする</button>
 </form>
-{#if completed}
-    <p>投稿しました</p>
-{/if}
 
 <style>
     .error {
