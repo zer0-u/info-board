@@ -15,5 +15,6 @@ CREATE TABLE images
     id         SERIAL PRIMARY KEY,
     article_id SERIAL
         REFERENCES articles (id),
+    name VARCHAR(256),
     image      BYTEA
 );
