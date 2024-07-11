@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/images")
 public class ImageController {
@@ -15,6 +17,11 @@ public class ImageController {
 
     public ImageController(ImageService service) {
         this.service = service;
+    }
+
+    @GetMapping
+    public List<Image> getAll() {
+        return service.getAllImages();
     }
 
     @GetMapping("/{id}")

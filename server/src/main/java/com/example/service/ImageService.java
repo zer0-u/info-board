@@ -4,6 +4,8 @@ import com.example.persistence.ImageMapper;
 import com.example.persistence.entity.Image;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ImageService {
 
@@ -15,5 +17,9 @@ public class ImageService {
 
     public Image getImageById(int id) {
         return mapper.getImageById(id);
+    }
+
+    public List<Image> getAllImages() {
+        return mapper.findAll();
     }
 }
