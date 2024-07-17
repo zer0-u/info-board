@@ -1,52 +1,40 @@
 package com.example.persistence.entity;
 
+import com.example.web.request.ImageRequest;
+
 public class Image {
 
     private Integer id;
-    //    private Integer articleId;
     private String name;
-    private String schema;
-    private byte[] image;
+    private String header;
+    private byte[] base64;
 
-    public Image() {
+    public Image(ImageRequest request) {
+        this.name = request.getName();
+        this.header = request.getHeader();
+        this.base64 = request.getBase64();
     }
 
-    public Image(Integer id, String name, String schema, byte[] image) {
+    public Image(Integer id, String name, String header, byte[] base64) {
         this.id = id;
         this.name = name;
-        this.schema = schema;
-        this.image = image;
+        this.header = header;
+        this.base64 = base64;
     }
 
     public Integer getId() {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getHeader() {
+        return header;
     }
 
-    public String getSchema() {
-        return schema;
-    }
-
-    public void setSchema(String schema) {
-        this.schema = schema;
-    }
-
-    public byte[] getImage() {
-        return image;
-    }
-
-    public void setImage(byte[] image) {
-        this.image = image;
+    public byte[] getBase64() {
+        return base64;
     }
 }

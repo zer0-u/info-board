@@ -22,4 +22,8 @@ public class ImageService {
     public List<Image> getAllImages() {
         return mapper.findAll();
     }
+
+    public void save(Image image) {
+        mapper.insert(image);
+    }
 }
