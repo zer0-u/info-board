@@ -2,6 +2,7 @@
 
 import {onMounted, ref} from "vue";
 import Photo from "@/components/Photo.vue";
+import UploadPhoto from "@/components/UploadPhoto.vue";
 
 const images = ref([]);
 
@@ -17,6 +18,7 @@ onMounted((async () => {
 
 <template>
   <h1>画像テスト</h1>
+  <UploadPhoto/>
   <div v-for="image of images">
     <Photo :image/>
   </div>
