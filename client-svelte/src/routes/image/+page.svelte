@@ -5,7 +5,7 @@
 
 <div class="base">
     {#each data.images as image}
-        <img src={`${image.schema},${image.image}`} alt={image.name}/>
+        <img src={`${image.header},${image.base64}`} alt={image.name}/>
     {/each}
 </div>
 
