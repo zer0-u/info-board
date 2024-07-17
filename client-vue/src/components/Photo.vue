@@ -7,7 +7,7 @@ const props = defineProps({
 
 <template>
   <div class="base">
-    <img :src="`${image.schema},${image.image}`" :alt="image.name"/>
+    <img :src="`${image.header},${image.base64}`" :alt="image.name"/>
   </div>
 
 </template>
