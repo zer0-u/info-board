@@ -15,6 +15,11 @@
                 <p>{dayjs(article.createdAt).format("YYYY/MM/DD HH:mm")}</p>
             </span>
             <p>{article.content}</p>
+            <div>
+                {#each article.images as image}
+                    <img src={`${image.header},${image.base64}`} alt={image.name}/>
+                {/each}
+            </div>
         </div>
     {/each}
 </div>
@@ -28,5 +33,9 @@
         border: 1px solid black;
         padding: 1rem;
         margin: 1rem;
+    }
+
+    img {
+        max-width: 100%;
     }
 </style>
