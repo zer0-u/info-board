@@ -10,8 +10,12 @@ import java.util.List;
 
 @Mapper
 public interface ImageMapper {
-    @Select("SELECT id, name, header, base64 FROM images WHERE id = #{id}")
-    Image getImageById(int id);
+
+    @Select("SELECT id, name, header, base64 FROM images WHERE article_id = #{id}")
+    List<Image> findByArticleId(int id);
+
+    @Select("SELECT id, article_id, name, header, base64 FROM images WHERE id = #{id}")
+    Image findById(int id);
 
     @Select("SELECT id, name, header, base64 FROM images ORDER BY id")
     List<Image> findAll();

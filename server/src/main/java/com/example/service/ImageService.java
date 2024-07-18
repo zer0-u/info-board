@@ -16,7 +16,7 @@ public class ImageService {
     }
 
     public Image getImageById(int id) {
-        return mapper.getImageById(id);
+        return mapper.findById(id);
     }
 
     public List<Image> getAllImages() {
