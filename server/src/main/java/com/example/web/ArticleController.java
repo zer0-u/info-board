@@ -28,10 +28,9 @@ public class ArticleController {
 
     @PostMapping
     public ResponseEntity<Void> post(@Validated @RequestBody ArticleRequest request) {
-        Article article = new Article(request);
-        service.add(article);
+        Integer articleId = service.add(request);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
-                .pathSegment(article.getId().toString())
+                .pathSegment(articleId.toString())
                 .build().encode()
                 .toUri();
         return ResponseEntity.created(location).build();

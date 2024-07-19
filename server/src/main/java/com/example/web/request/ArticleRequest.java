@@ -4,6 +4,8 @@ package com.example.web.request;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
+import java.util.List;
+
 public class ArticleRequest {
 
     @NotNull
@@ -18,21 +20,28 @@ public class ArticleRequest {
     @NotEmpty
     private String content;
 
-    public ArticleRequest(String title, String author, String content) {
+    private List<ImageRequest> images;
+
+    public ArticleRequest(String title, String author, String content, List<ImageRequest> images) {
         this.title = title;
         this.author = author;
         this.content = content;
+        this.images = images;
     }
 
-    public @NotNull @NotEmpty String getTitle() {
+    public String getTitle() {
         return title;
     }
 
-    public @NotNull @NotEmpty String getAuthor() {
+    public String getAuthor() {
         return author;
     }
 
-    public @NotNull @NotEmpty String getContent() {
+    public String getContent() {
         return content;
+    }
+
+    public List<ImageRequest> getImages() {
+        return images;
     }
 }
