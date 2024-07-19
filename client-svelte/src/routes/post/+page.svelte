@@ -1,7 +1,7 @@
 <script>
     export let form;
     let imageFiles = [];
-    let base64Images = [];
+    let base64Images = '';
 
     async function readAsDataURL(imageFile) {
         return new Promise((resolve, reject) => {
@@ -17,12 +17,12 @@
     }
 
     async function encodeImageFiles() {
-        base64Images = await Promise.all(Array.from(imageFiles).map(async imageFile => {
+        const encoded = await Promise.all(Array.from(imageFiles).map(async imageFile => {
             const name = imageFile.name;
             const [header, base64] = (await readAsDataURL(imageFile)).split(',');
             return {name, header, base64};
         }));
-        console.log(base64Images);
+        base64Images = JSON.stringify(encoded);
     }
 
 </script>
@@ -76,6 +76,7 @@
             <li>{imageFile.name}</li>
         {/each}
     </ul>
+    <input type="hidden" bind:value={base64Images} name="base64Images"/>
     <button formaction="?/create">投稿する</button>
     <button formaction="?/reset">リセットする</button>
 </form>

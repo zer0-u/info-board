@@ -25,6 +25,7 @@ export const actions = {
         if (hasError(input)) {
             return fail(400, input);
         }
+        const images = JSON.parse(data.get('base64Images'));
         await fetch('/api/articles', {
             method: 'POST',
             headers: {
@@ -33,7 +34,8 @@ export const actions = {
             body: JSON.stringify({
                 title: input.title.value,
                 author: input.author.value,
-                content: input.content.value
+                content: input.content.value,
+                images: images,
             })
         });
         redirect(301, "/articles");
