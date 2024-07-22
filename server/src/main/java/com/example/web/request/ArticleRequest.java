@@ -1,7 +1,7 @@
 package com.example.web.request;
 
 
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 import java.util.List;
@@ -9,17 +9,18 @@ import java.util.List;
 public class ArticleRequest {
 
     @NotNull
-    @NotEmpty
+    @NotBlank
     private String title;
 
     @NotNull
-    @NotEmpty
+    @NotBlank
     private String author;
 
     @NotNull
-    @NotEmpty
+    @NotBlank
     private String content;
 
+    @NotNull
     private List<ImageRequest> images;
 
     public ArticleRequest(String title, String author, String content, List<ImageRequest> images) {
