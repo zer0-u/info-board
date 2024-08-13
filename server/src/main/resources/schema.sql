@@ -1,5 +1,8 @@
 DROP TABLE IF EXISTS images;
 DROP TABLE IF EXISTS articles;
+DROP TABLE IF EXISTS user_role;
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS roles;
 
 CREATE TABLE articles
 (
@@ -17,4 +20,24 @@ CREATE TABLE images
     name   VARCHAR(256),
     header VARCHAR(128),
     base64 BYTEA
+);
+
+CREATE TABLE roles
+(
+    id   INTEGER PRIMARY KEY,
+    name VARCHAR(256)
+);
+
+CREATE TABLE users
+(
+    id       SERIAL PRIMARY KEY,
+    login_id VARCHAR(256),
+    password VARCHAR(256),
+    name     VARCHAR(256)
+);
+
+CREATE TABLE user_role
+(
+    user_id SERIAL REFERENCES users (id) ON DELETE CASCADE,
+    role_id INTEGER REFERENCES roles (id)
 );

@@ -11,3 +11,22 @@ INSERT INTO images(article_id, name, header, base64)
 VALUES (1, '琥珀糖', 'data:image/jpeg;base64', pg_read_binary_file('images/food/kohaku.jpg'));
 INSERT INTO images(article_id, name, header, base64)
 VALUES (2, 'たいやき', 'data:image/png;base64', pg_read_binary_file('images/food/taiyaki.png'));
+
+INSERT INTO roles(id, name)
+VALUES (1, 'ROLE_ADMIN');
+INSERT INTO roles(id, name)
+VALUES (2, 'ROLE_GENERAL');
+
+INSERT INTO users(login_id, password, name)
+VALUES ('admin01', 'password', '管理者01');
+INSERT INTO users(login_id, password, name)
+VALUES ('general01', 'password', '一般01');
+INSERT INTO users(login_id, password, name)
+VALUES ('general02', 'password', '一般02');
+
+INSERT INTO user_role(user_id, role_id)
+VALUES (1, 1);
+INSERT INTO user_role(user_id, role_id)
+VALUES (2, 2);
+INSERT INTO user_role(user_id, role_id)
+VALUES (3, 2);
