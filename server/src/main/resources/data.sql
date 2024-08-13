@@ -18,11 +18,11 @@ INSERT INTO roles(id, name)
 VALUES (2, 'ROLE_GENERAL');
 
 INSERT INTO users(login_id, password, name)
-VALUES ('admin01', 'password', '管理者01');
+VALUES ('admin01', '$2a$10$8h7/E5TvXsSiBer.b5QuJeh8QXipg0ef0bxWzTHjmMhFSUr4M.VIe', '管理者01');
 INSERT INTO users(login_id, password, name)
-VALUES ('general01', 'password', '一般01');
+VALUES ('general01', '$2a$10$8h7/E5TvXsSiBer.b5QuJeh8QXipg0ef0bxWzTHjmMhFSUr4M.VIe', '一般01');
 INSERT INTO users(login_id, password, name)
-VALUES ('general02', 'password', '一般02');
+VALUES ('general02', '$2a$10$8h7/E5TvXsSiBer.b5QuJeh8QXipg0ef0bxWzTHjmMhFSUr4M.VIe', '一般02');
 
 INSERT INTO user_role(user_id, role_id)
 VALUES (1, 1);
