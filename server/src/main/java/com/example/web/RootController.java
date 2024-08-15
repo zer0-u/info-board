@@ -11,11 +11,6 @@ public class RootController {
         return "OK!";
     }
 
-    @GetMapping("/permit-all")
-    public String permitAll() {
-        return "permit all path";
-    }
-
     @GetMapping("/authenticated")
     public String authenticated() {
         return "authenticated path";
